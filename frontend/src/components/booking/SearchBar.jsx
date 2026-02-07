@@ -60,8 +60,8 @@ const SearchBar = ({ onSearch, className = '' }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className={`bg-white rounded-xl shadow-lg p-6 ${className}`}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <form onSubmit={handleSubmit} className={`bg-white rounded-xl shadow-lg p-4 md:p-6 ${className}`}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                 {/* Location */}
                 <div className="lg:col-span-1">
                     <label htmlFor="location" className="block text-sm font-medium text-slate-700 mb-1.5">
@@ -138,12 +138,13 @@ const SearchBar = ({ onSearch, className = '' }) => {
                 </div>
 
                 {/* Search Button */}
-                <div className="lg:col-span-1 flex items-end">
+                <div className="sm:col-span-2 lg:col-span-1 flex items-end">
                     <Button
                         type="submit"
                         variant="primary"
                         fullWidth
                         icon={<Search size={18} />}
+                        className="min-h-[44px]"
                     >
                         Search
                     </Button>

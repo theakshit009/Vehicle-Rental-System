@@ -149,8 +149,8 @@ const Signup = () => {
             </div>
 
             {/* Right Side - Form */}
-            <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white py-12">
-                <div className="max-w-md w-full space-y-8">
+            <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white py-8">
+                <div className="max-w-md w-full space-y-6 md:space-y-8">
                     <div>
                         <h2 className="text-3xl font-bold text-slate-900">
                             Create Account
@@ -160,7 +160,7 @@ const Signup = () => {
                         </p>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+                    <form onSubmit={handleSubmit} className="mt-6 md:mt-8 space-y-4 md:space-y-5">
                         {/* Name */}
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">
@@ -260,8 +260,8 @@ const Signup = () => {
                                             <div
                                                 key={level}
                                                 className={`h-1 flex-1 rounded ${level < passwordStrength
-                                                        ? strengthColors[passwordStrength - 1]
-                                                        : 'bg-slate-200'
+                                                    ? strengthColors[passwordStrength - 1]
+                                                    : 'bg-slate-200'
                                                     }`}
                                             />
                                         ))}
@@ -316,7 +316,7 @@ const Signup = () => {
                                     type="checkbox"
                                     checked={formData.agreeToTerms}
                                     onChange={handleChange}
-                                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-slate-300 rounded cursor-pointer mt-0.5"
+                                    className="h-5 w-5 text-indigo-600 focus:ring-indigo-500 border-slate-300 rounded cursor-pointer mt-0.5"
                                 />
                                 <label htmlFor="agreeToTerms" className="ml-2 block text-sm text-slate-700 cursor-pointer">
                                     I agree to the{' '}

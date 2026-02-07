@@ -28,19 +28,19 @@ const CountrySelector = () => {
         <div className="relative" ref={dropdownRef}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition-colors"
+                className="flex items-center gap-1.5 px-2 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition-colors"
                 aria-label="Select country"
             >
-                <Globe size={18} className="text-slate-600" />
-                <span className="text-lg">{selectedCountry.flag}</span>
-                <span className="hidden sm:inline text-sm font-medium text-slate-700">
+                <Globe size={14} className="text-slate-600" />
+                <span className="text-base">{selectedCountry.flag}</span>
+                <span className="hidden sm:inline text-xs font-medium text-slate-700">
                     {selectedCountry.code}
                 </span>
                 <span className="text-xs text-slate-500">
                     {selectedCountry.currencySymbol}
                 </span>
                 <ChevronDown
-                    size={16}
+                    size={14}
                     className={`text-slate-400 transition-transform ${isOpen ? 'rotate-180' : ''}`}
                 />
             </button>

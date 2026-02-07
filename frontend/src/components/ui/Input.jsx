@@ -16,7 +16,7 @@ const Input = forwardRef(({
 }, ref) => {
     const inputId = props.id || `input-${Math.random().toString(36).substr(2, 9)}`;
 
-    const baseInputStyles = 'block w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-slate-900 placeholder:text-slate-400 transition-all duration-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-0 disabled:bg-slate-50 disabled:text-slate-500 disabled:cursor-not-allowed';
+    const baseInputStyles = 'block w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-base text-slate-900 placeholder:text-slate-400 transition-all duration-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-0 disabled:bg-slate-50 disabled:text-slate-500 disabled:cursor-not-allowed min-h-[44px]';
 
     const errorStyles = error ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : '';
     const iconPadding = icon ? 'pl-11' : '';

@@ -42,7 +42,7 @@ const Home = () => {
     return (
         <div>
             {/* Hero Section */}
-            <section className="relative bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-900 text-white py-20 md:py-28 overflow-hidden">
+            <section className="relative bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-900 text-white py-12 md:py-20 lg:py-28 overflow-hidden">
                 {/* Background Image with Overlay */}
                 <div
                     className="absolute inset-0 bg-cover bg-center"

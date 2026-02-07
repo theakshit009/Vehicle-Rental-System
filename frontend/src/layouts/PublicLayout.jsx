@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { Car, User, LogOut, BookOpen } from 'lucide-react';
+import { Car, User, LogOut, BookOpen, Menu, X } from 'lucide-react';
 import CountrySelector from '../components/ui/CountrySelector';
 import { useAuthStore } from '../store/auth.store';
 
@@ -8,6 +8,7 @@ const PublicLayout = () => {
     const { user, isAuthenticated, logout } = useAuthStore();
     const navigate = useNavigate();
     const [showProfileMenu, setShowProfileMenu] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const handleLogout = () => {
         logout();
@@ -20,41 +21,41 @@ const PublicLayout = () => {
             {/* Header */}
             <header className="bg-white border-b border-slate-200 sticky top-0 z-40">
                 <div className="container-custom">
-                    <div className="flex items-center justify-between h-16">
+                    <div className="flex items-center gap-2 md:gap-8 lg:gap-20 justify-between h-16">
                         {/* Logo */}
-                        <Link to="/" className="flex items-center gap-2 group">
-                            <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center group-hover:bg-indigo-700 transition-colors">
-                                <Car size={24} className="text-white" />
+                        <Link to="/" className="flex items-center gap-1.5 sm:gap-2 group flex-shrink-0">
+                            <div className="w-9 h-9 sm:w-10 sm:h-10 bg-indigo-600 rounded-lg flex items-center justify-center group-hover:bg-indigo-700 transition-colors">
+                                <Car size={20} className="sm:w-6 sm:h-6 text-white" />
                             </div>
-                            <span className="text-xl font-bold text-slate-900">
+                            <span className="text-lg sm:text-xl font-bold text-slate-900">
                                 VehicleRental
                             </span>
                         </Link>
 
                         {/* Navigation */}
-                        <nav className="hidden md:flex items-center gap-8">
+                        <nav className="hidden md:flex items-center gap-2 lg:gap-8">
                             <Link
                                 to="/"
-                                className="text-slate-600 hover:text-slate-900 font-medium transition-colors"
+                                className="text-slate-600 hover:text-slate-900 text-xs lg:text-base font-medium transition-colors whitespace-nowrap"
                             >
                                 Home
                             </Link>
                             <Link
                                 to="/search"
-                                className="text-slate-600 hover:text-slate-900 font-medium transition-colors"
+                                className="text-slate-600 hover:text-slate-900 text-xs lg:text-base font-medium transition-colors whitespace-nowrap"
                             >
                                 Browse Vehicles
                             </Link>
                             <Link
                                 to="/about"
-                                className="text-slate-600 hover:text-slate-900 font-medium transition-colors"
+                                className="text-slate-600 hover:text-slate-900 text-xs lg:text-base font-medium transition-colors whitespace-nowrap"
                             >
                                 About Us
                             </Link>
                         </nav>
 
                         {/* CTA / User Profile */}
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-1.5 sm:gap-3 ml-auto">
                             {/* Country Selector */}
                             <CountrySelector />
 
@@ -120,20 +121,73 @@ const PublicLayout = () => {
                                 <>
                                     <Link
                                         to="/login"
-                                        className="text-slate-700 hover:text-slate-900 font-medium transition-colors hidden sm:block"
+                                        className="text-slate-700 hover:text-slate-900 text-xs lg:text-base font-medium transition-colors hidden sm:block whitespace-nowrap"
                                     >
                                         Sign In
                                     </Link>
                                     <Link
                                         to="/signup"
-                                        className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-medium"
+                                        className="hidden md:inline-flex px-2 lg:px-4 py-1.5 lg:py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-xs lg:text-base font-medium whitespace-nowrap"
                                     >
                                         Get Started
                                     </Link>
                                 </>
                             )}
+
+                            {/* Mobile menu button */}
+                            <button
+                                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                                className="md:hidden p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
+                                aria-label="Toggle menu"
+                            >
+                                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                            </button>
                         </div>
                     </div>
+
+                    {/* Mobile Navigation */}
+                    {mobileMenuOpen && (
+                        <div className="md:hidden py-4 border-t border-slate-200">
+                            <nav className="space-y-1">
+                                <Link
+                                    to="/"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block px-4 py-3 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors font-medium"
+                                >
+                                    Home
+                                </Link>
+                                <Link
+                                    to="/search"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block px-4 py-3 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors font-medium"
+                                >
+                                    Browse Vehicles
+                                </Link>
+                                <Link
+                                    to="/about"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block px-4 py-3 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors font-medium"
+                                >
+                                    About Us
+                                </Link>
+
+                                {/* Mobile auth links (when not authenticated) */}
+                                {!isAuthenticated && (
+                                    <>
+                                        <div className="border-t border-slate-200 my-2 pt-2">
+                                            <Link
+                                                to="/login"
+                                                onClick={() => setMobileMenuOpen(false)}
+                                                className="block px-4 py-3 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors font-medium"
+                                            >
+                                                Sign In
+                                            </Link>
+                                        </div>
+                                    </>
+                                )}
+                            </nav>
+                        </div>
+                    )}
                 </div>
             </header>
 
@@ -145,9 +199,9 @@ const PublicLayout = () => {
             {/* Footer */}
             <footer className="bg-slate-900 text-slate-300 mt-16">
                 <div className="container-custom py-12">
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         {/* Company Info */}
-                        <div className="md:col-span-2">
+                        <div className="sm:col-span-2 lg:col-span-2">
                             <div className="flex items-center gap-2 mb-4">
                                 <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
                                     <Car size={24} className="text-white" />

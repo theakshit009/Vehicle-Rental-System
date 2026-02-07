@@ -57,23 +57,23 @@ const Modal = ({
             onClick={handleBackdropClick}
         >
             <div
-                className={`bg-white rounded-xl shadow-xl ${sizes[size]} w-full max-h-[90vh] overflow-hidden slide-up`}
+                className={`bg-white rounded-xl shadow-xl ${sizes[size]} w-full max-h-[90vh] md:max-h-[85vh] overflow-hidden slide-up`}
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="modal-title"
             >
                 {/* Header */}
                 {(title || showClose) && (
-                    <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200">
+                    <div className="flex items-center justify-between px-4 md:px-6 py-3 md:py-4 border-b border-slate-200">
                         {title && (
-                            <h3 id="modal-title" className="text-xl font-semibold text-slate-900">
+                            <h3 id="modal-title" className="text-lg md:text-xl font-semibold text-slate-900">
                                 {title}
                             </h3>
                         )}
                         {showClose && (
                             <button
                                 onClick={onClose}
-                                className="p-1 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+                                className="p-2 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
                                 aria-label="Close modal"
                             >
                                 <X size={20} />
@@ -83,13 +83,13 @@ const Modal = ({
                 )}
 
                 {/* Body */}
-                <div className="px-6 py-4 overflow-y-auto max-h-[calc(90vh-140px)]">
+                <div className="px-4 md:px-6 py-4 overflow-y-auto max-h-[calc(90vh-140px)]">
                     {children}
                 </div>
 
                 {/* Footer */}
                 {footer && (
-                    <div className="px-6 py-4 border-t border-slate-200 bg-slate-50">
+                    <div className="px-4 md:px-6 py-3 md:py-4 border-t border-slate-200 bg-slate-50">
                         {footer}
                     </div>
                 )}
